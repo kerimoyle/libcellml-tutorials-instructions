@@ -1,4 +1,4 @@
-.. test_installation_ ::
+.. tutorial0_ ::
 
 ==========================================================
 Tutorial 0: Installing and testing the libCellML libraries

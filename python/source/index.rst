@@ -28,7 +28,7 @@ Introductory tutorials
 .. toctree::
    :maxdepth: 1
 
-   test_installation
+   tutorial0
    tutorial1
    tutorial2
    tutorial3
