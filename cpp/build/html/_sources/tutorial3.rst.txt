@@ -341,7 +341,7 @@ it, and then add it in.  For example:
 .. code-block:: cpp
 
     // Declaring, naming, and defining the "millisecond" unit pointer
-    libcellml::UnitsPtr ms = std::make_shared<libcellml::Units>();
+    libcellml::UnitsPtr ms = libcellml::Units::create();
     ms->setName("millisecond");
 
     // The manner of specification here is agnostic: all three definitions are identical.
@@ -397,14 +397,14 @@ not physically based, you're able to define your own.  Here's an example.
 .. code-block:: cpp
 
     // Create a custom irreducible unit named "banana"
-    libcellml::UnitsPtr uBanana = std::make_shared<libcellml::Units>();
+    libcellml::UnitsPtr uBanana = libcellml::Units::create();
     uBanana->setName("banana");
 
     // Note that when a UnitsPtr is defined with a name only, it is effectively
     // irreducible.
 
     // Create a new compound unit based on the "banana" unit above
-    libcellml::UnitsPtr uBunchOfBananas = std::make_shared<libcellml::Units>();
+    libcellml::UnitsPtr uBunchOfBananas = libcellml::Units::create();
     u2->setName("bunch_of_bananas");
     u2->addUnit("banana", 5.0);  // include bananas^5 in the bunch_of_bananas unit
 
@@ -565,6 +565,8 @@ as *profiles*.  The default setting is for C, but you can change this using the
     libcellml::GeneratorProfilePtr profile =
         std::make_shared<libcellml::GeneratorProfile>(libcellml::GeneratorProfile::Profile::PYTHON);
     generator.setProfile(profile);
+
+**TODO** Check whether this is changed to create() for the GeneratorProfile
 
 Of course, your choice of generator profile (language) will affect
 *what* you need to export:

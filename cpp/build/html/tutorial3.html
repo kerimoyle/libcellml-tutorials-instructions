@@ -413,7 +413,7 @@ result</div>
 follow the same basic steps as other entities: declare it, name it, define
 it, and then add it in.  For example:</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// Declaring, naming, and defining the &quot;millisecond&quot; unit pointer</span>
-<span class="n">libcellml</span><span class="o">::</span><span class="n">UnitsPtr</span> <span class="n">ms</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">make_shared</span><span class="o">&lt;</span><span class="n">libcellml</span><span class="o">::</span><span class="n">Units</span><span class="o">&gt;</span><span class="p">();</span>
+<span class="n">libcellml</span><span class="o">::</span><span class="n">UnitsPtr</span> <span class="n">ms</span> <span class="o">=</span> <span class="n">libcellml</span><span class="o">::</span><span class="n">Units</span><span class="o">::</span><span class="n">create</span><span class="p">();</span>
 <span class="n">ms</span><span class="o">-&gt;</span><span class="n">setName</span><span class="p">(</span><span class="s">&quot;millisecond&quot;</span><span class="p">);</span>
 
 <span class="c1">// The manner of specification here is agnostic: all three definitions are identical.</span>
@@ -460,14 +460,14 @@ While this is not common (all of the seven physical attriubutes are already
 included), for those rare occasions where you might need to model something
 not physically based, you’re able to define your own.  Here’s an example.</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// Create a custom irreducible unit named &quot;banana&quot;</span>
-<span class="n">libcellml</span><span class="o">::</span><span class="n">UnitsPtr</span> <span class="n">uBanana</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">make_shared</span><span class="o">&lt;</span><span class="n">libcellml</span><span class="o">::</span><span class="n">Units</span><span class="o">&gt;</span><span class="p">();</span>
+<span class="n">libcellml</span><span class="o">::</span><span class="n">UnitsPtr</span> <span class="n">uBanana</span> <span class="o">=</span> <span class="n">libcellml</span><span class="o">::</span><span class="n">Units</span><span class="o">::</span><span class="n">create</span><span class="p">();</span>
 <span class="n">uBanana</span><span class="o">-&gt;</span><span class="n">setName</span><span class="p">(</span><span class="s">&quot;banana&quot;</span><span class="p">);</span>
 
 <span class="c1">// Note that when a UnitsPtr is defined with a name only, it is effectively</span>
 <span class="c1">// irreducible.</span>
 
 <span class="c1">// Create a new compound unit based on the &quot;banana&quot; unit above</span>
-<span class="n">libcellml</span><span class="o">::</span><span class="n">UnitsPtr</span> <span class="n">uBunchOfBananas</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">make_shared</span><span class="o">&lt;</span><span class="n">libcellml</span><span class="o">::</span><span class="n">Units</span><span class="o">&gt;</span><span class="p">();</span>
+<span class="n">libcellml</span><span class="o">::</span><span class="n">UnitsPtr</span> <span class="n">uBunchOfBananas</span> <span class="o">=</span> <span class="n">libcellml</span><span class="o">::</span><span class="n">Units</span><span class="o">::</span><span class="n">create</span><span class="p">();</span>
 <span class="n">u2</span><span class="o">-&gt;</span><span class="n">setName</span><span class="p">(</span><span class="s">&quot;bunch_of_bananas&quot;</span><span class="p">);</span>
 <span class="n">u2</span><span class="o">-&gt;</span><span class="n">addUnit</span><span class="p">(</span><span class="s">&quot;banana&quot;</span><span class="p">,</span> <span class="mf">5.0</span><span class="p">);</span>  <span class="c1">// include bananas^5 in the bunch_of_bananas unit</span>
 </pre></div>
@@ -624,6 +624,7 @@ as <em>profiles</em>.  The default setting is for C, but you can change this usi
 <span class="n">generator</span><span class="p">.</span><span class="n">setProfile</span><span class="p">(</span><span class="n">profile</span><span class="p">);</span>
 </pre></div>
 </div>
+<p><strong>TODO</strong> Check whether this is changed to create() for the GeneratorProfile</p>
 <p>Of course, your choice of generator profile (language) will affect
 <em>what</em> you need to export:</p>
 <ul class="simple">
