@@ -239,7 +239,7 @@ If this isn't what you see then please see the Troubleshooting section TODO
 
     **4.c** Now build the :code:`tutorial0` example
 
-..code-block:: console
+.. code-block:: console
 
     make -j
 
@@ -247,7 +247,7 @@ If this isn't what you see then please see the Troubleshooting section TODO
 
     **4.d** Finally, run the program to give the following output:
 
-..code-block:: console
+.. code-block:: console
 
     ./tutorial0
 
