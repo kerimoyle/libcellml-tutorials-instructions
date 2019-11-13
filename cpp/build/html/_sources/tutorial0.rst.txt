@@ -140,10 +140,10 @@ Your directory structure should now look like:
 .. code-block:: text
 
     -- MyLibCellMLDirectory
-            +--libcellml
-                ( ... all the files created in steps 1 and 2 )
-            +--tutorials
-                ( ... empty )
+        +--libcellml
+            ( ... all the files created in steps 1 and 2 )
+        +--tutorials
+            ( ... empty )
 
 .. container:: dothis
 
@@ -151,12 +151,14 @@ Your directory structure should now look like:
     flavour of tutorials that you're interested in.
 
 For C++:
+
 .. code-block:: console
 
     cd tutorials
     git clone https://github.com/kerimoyle/libcellml-tutorials-cpp.git
 
 For Python:
+
 .. code-block:: console
 
     cd tutorials
