@@ -8,8 +8,10 @@ Tutorial 0: Installing and testing the libCellML libraries
 1: Create the libCellML library
 -----------------------------------------------------
 
-a. Create an empty folder and navigate into it, then create a further empty
-folder called :code:`libcellml`, and navigate into that one.
+.. container:: dothis
+
+    **1.a** Create an empty folder and navigate into it, then create a further empty
+    folder called :code:`libcellml`, and navigate into that one.
 
 .. code-block:: console
 
@@ -18,8 +20,10 @@ folder called :code:`libcellml`, and navigate into that one.
     mkdir libcellml
     cd libcellml
 
-b. Clone the branch from the libCellML library github repository.  This will
-create and populate a folder called :code:`libcellml`.
+.. container:: dothis
+
+    **1.b** Clone the branch from the libCellML library github repository.  This will
+    create and populate a folder called :code:`libcellml`.
 
 .. code-block:: console
 
@@ -35,8 +39,10 @@ Your folder structure is now:
                 +-- ( ... contains the files you cloned )
 
 
-c. Rename the cloned :code:`libcellml` folder to be :code:`source`, and create
-two sibling folders called :code:`build` and :code:`install`:
+.. container:: dothis
+
+    **1.c** Rename the cloned :code:`libcellml` folder to be :code:`source`, and create
+    two sibling folders called :code:`build` and :code:`install`:
 
 .. code-block:: console
 
@@ -61,8 +67,10 @@ Your folder structure should now look like this:
 2: Build and install the library
 -------------------------------------------
 
-a. Navigate into the :code:`MyLibCellMLDirectory/libcellml/build` directory
-to make the library:
+.. container:: dothis
+
+    **2.a** Navigate into the :code:`MyLibCellMLDirectory/libcellml/build` directory
+    to make the library:
 
 .. code-block:: console
 
@@ -80,7 +88,9 @@ and finishes with a message like this:
     -- Generating done
     -- Build files have been written to: /Users/YourName/MyLibCellMLDirectory/libcellml/build
 
-b. From the same location, install the library:
+.. container:: dothis
+
+    **2.b** From the same location, install the library:
 
 .. code-block:: console
 
@@ -115,8 +125,10 @@ Your directory structure should now look like:
 3: Create the tutorials
 ------------------------------
 
-a. Change back into the top directory (:code:`MyLibCellMLDirectory`),
-and create a directory for the tutorials.
+.. container:: dothis
+
+    **3.a** Change back into the top directory (:code:`MyLibCellMLDirectory`),
+    and create a directory for the tutorials.
 
 .. code-block:: console
 
@@ -133,8 +145,10 @@ Your directory structure should now look like:
             +--tutorials
                 ( ... empty )
 
-b. Change into the new :code:`tutorials` directory and clone the
-flavour of tutorials that you're interested in.
+.. container:: dothis
+
+    **3.b** Change into the new :code:`tutorials` directory and clone the
+    flavour of tutorials that you're interested in.
 
 For C++:
 .. code-block:: console
@@ -147,7 +161,6 @@ For Python:
 
     cd tutorials
     git clone https://github.com/kerimoyle/libcellml-tutorials-python.git
-
 
 Your folder structure should now look like what's shown below.  Note that
 whichever flavour of tutorial you have cloned does not alter the structure,
@@ -173,7 +186,7 @@ only the folder name inside your :code:`tutorials` folder:
             +--utilities
 
 -------------------------------------------------------
-5: Test the installation by running your first tutorial
+4: Test the installation by running your first tutorial
 -------------------------------------------------------
 If all has gone well so far you should see four folders:
 
@@ -198,15 +211,19 @@ If all has gone well so far you should see four folders:
 Finally, let's test that the installation has worked by building and running
 Tutorial 0.
 
-a. Navigate into the :code:`tutorials/tutorial0` directory to run CMake to
-   create the Makefile.
+.. container:: dothis
+
+    **4.a** Navigate into the :code:`tutorials/tutorial0` directory to run CMake to
+    create the Makefile.
 
 .. code-block:: console
 
     cd tutorials/tutorial0
     cmake .
 
-b. If this is correct you should see an output ending similar to this:
+.. container:: dothis
+
+    **4.b**  If this is correct you should see an output ending similar to this:
 
 .. code-block:: console
 
@@ -216,13 +233,17 @@ b. If this is correct you should see an output ending similar to this:
 
 If this isn't what you see then please see the Troubleshooting section TODO
 
-c. Now build the :code:`tutorial0` example
+.. container:: dothis
+
+    **4.c** Now build the :code:`tutorial0` example
 
 ..code-block:: console
 
     make -j
 
-d. Finally, run the program to give the following output:
+.. container:: dothis
+
+    **4.d** Finally, run the program to give the following output:
 
 ..code-block:: console
 
@@ -230,6 +251,12 @@ d. Finally, run the program to give the following output:
 
 .. code-block:: console
 
-    Hello libCellML user!
-    This version is 0.2.0
+    -----------------------------------------------
+        Welcome to libCellML!
+        This version number is 0.2.0
+    -----------------------------------------------
+
+.. container:: dothis
+
+    **4.e** Go and have a cuppa, you're done!
 
