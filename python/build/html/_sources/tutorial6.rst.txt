@@ -50,6 +50,3 @@ container:: dothis
     check that no errors were encountered.
 
 TODO Currently segfaults - waiting for fix.
-
-
-

@@ -257,13 +257,3 @@ potassium channel model to simulate a neuron **TODO??**.
 .. container:: dothis
 
     **7.b** Go and have a cuppa - you're done!
-
-
-
-
-
-
-
-
-
-

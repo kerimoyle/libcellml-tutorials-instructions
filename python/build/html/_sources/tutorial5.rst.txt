@@ -402,4 +402,3 @@ default, and can apply to more than one section of the axis.
 .. container:: dothis
 
     **6.b** Go and have a cuppa, you're done!
-

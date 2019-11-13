@@ -1,3 +1,4 @@
+@@ -0,0 +1,451 @@
 .. _tutorial8:
 
 =============================================================
@@ -97,7 +98,7 @@ by simply printing the combined model to the screen.
 
 .. container:: dothis
 
-    **1.c** Call the validator to check the combined model.  At this stage we
+    **1.d** Call the validator to check the combined model.  At this stage we
     expect to see errors related to missing units: we have imported a component
     containing maths and variables, both of which reference units that we haven't
     yet included in the combined model:
@@ -119,12 +120,12 @@ by simply printing the combined model to the screen.
 
 .. container:: dothis
 
-    **1.d** Use a loop to import all of the units from the the potassium
+    **1.e** Use a loop to import all of the units from the the potassium
     channel model into the combined model.
 
 .. container:: dothis
 
-    **1.e** Validate the combined model once more and check that it is now free
+    **1.f** Validate the combined model once more and check that it is now free
     of errors.
 
 ------------------------------------
@@ -193,17 +194,9 @@ environment component in the sodium channel *model*.
 
     **PUT ERRORS HERE WHEN VALIDATOR IS WORKING**
 
-Recall the idiom you used in :ref:`Tutorial 5<tutorial5>` to *create* the
-connections between equivalent variables:
-
-.. code-block:: python
-
-    # Retrieving the pointers to the variables via their names and adding an equivalence
-    libcellml.Variable.addEquivalence(environment.variable("t"), potassiumChannel.variable("t"))
-    libcellml.Variable.addEquivalence(environment.variable("t"), nGate.variable("t"))
-
-The same can be done in reverse here to *remove* the equivalence between two
-variables:
+Recall the idiom you used in :ref:`Tutorial 5<tutorial5>` to create the
+connections between equivalent variables; the same can be done in reverse
+here to *remove* the equivalence between two variables:
 
 .. code-block:: python
 
@@ -451,9 +444,4 @@ add a definition for this stimulus current.
 -------------------
 Finally you're ready to write the model ready for simulation.  You know the
 drill!
-
-
-
-
-
 

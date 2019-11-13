@@ -90,8 +90,10 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="tutorial-8-encapsulating-components-and-working-with-parents">
-<span id="tutorial8"></span><h1>Tutorial 8: Encapsulating components and working with parents<a class="headerlink" href="#tutorial-8-encapsulating-components-and-working-with-parents" title="Permalink to this headline">¶</a></h1>
+  <p>&#64;&#64; -0,0 +1,451 &#64;&#64;
+.. _tutorial8:</p>
+<div class="section" id="tutorial-8-encapsulating-components-and-working-with-parents">
+<h1>Tutorial 8: Encapsulating components and working with parents<a class="headerlink" href="#tutorial-8-encapsulating-components-and-working-with-parents" title="Permalink to this headline">¶</a></h1>
 <p>Getting started:  If you’re reading this it’s presumed that you’re already
 comfortable with the deserlialisation and debugging functionality
 available in the libCellML library.</p>
@@ -170,7 +172,7 @@ below.  You can check back to the earlier
 <div class="math notranslate nohighlight">
 \[ \begin{align}\begin{aligned}i_{tot} = i_{stim} + i_{Na} + i_{K} + i_{L}\\\frac {dV} {dt} = \frac {-i_{tot}} {Cm}\end{aligned}\end{align} \]</div>
 <div class="dothis docutils container">
-<p><strong>1.c</strong> Call the validator to check the combined model.  At this stage we
+<p><strong>1.d</strong> Call the validator to check the combined model.  At this stage we
 expect to see errors related to missing units: we have imported a component
 containing maths and variables, both of which reference units that we haven’t
 yet included in the combined model:</p>
@@ -198,11 +200,11 @@ yet included in the combined model:</p>
 </div>
 </div>
 <div class="dothis docutils container">
-<p><strong>1.d</strong> Use a loop to import all of the units from the the potassium
+<p><strong>1.e</strong> Use a loop to import all of the units from the the potassium
 channel model into the combined model.</p>
 </div>
 <div class="dothis docutils container">
-<p><strong>1.e</strong> Validate the combined model once more and check that it is now free
+<p><strong>1.f</strong> Validate the combined model once more and check that it is now free
 of errors.</p>
 </div>
 </div>
@@ -270,15 +272,9 @@ environment component in the sodium channel <em>model</em>.</p>
 <div class="terminal docutils container">
 <p><strong>PUT ERRORS HERE WHEN VALIDATOR IS WORKING</strong></p>
 </div>
-<p>Recall the idiom you used in <a class="reference internal" href="tutorial5.html#tutorial5"><span class="std std-ref">Tutorial 5</span></a> to <em>create</em> the
-connections between equivalent variables:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Retrieving the pointers to the variables via their names and adding an equivalence</span>
-<span class="n">libcellml</span><span class="o">.</span><span class="n">Variable</span><span class="o">.</span><span class="n">addEquivalence</span><span class="p">(</span><span class="n">environment</span><span class="o">.</span><span class="n">variable</span><span class="p">(</span><span class="s2">&quot;t&quot;</span><span class="p">),</span> <span class="n">potassiumChannel</span><span class="o">.</span><span class="n">variable</span><span class="p">(</span><span class="s2">&quot;t&quot;</span><span class="p">))</span>
-<span class="n">libcellml</span><span class="o">.</span><span class="n">Variable</span><span class="o">.</span><span class="n">addEquivalence</span><span class="p">(</span><span class="n">environment</span><span class="o">.</span><span class="n">variable</span><span class="p">(</span><span class="s2">&quot;t&quot;</span><span class="p">),</span> <span class="n">nGate</span><span class="o">.</span><span class="n">variable</span><span class="p">(</span><span class="s2">&quot;t&quot;</span><span class="p">))</span>
-</pre></div>
-</div>
-<p>The same can be done in reverse here to <em>remove</em> the equivalence between two
-variables:</p>
+<p>Recall the idiom you used in <a class="reference internal" href="tutorial5.html#tutorial5"><span class="std std-ref">Tutorial 5</span></a> to create the
+connections between equivalent variables; the same can be done in reverse
+here to <em>remove</em> the equivalence between two variables:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Retrieving the pointers to the variables via their names and removing an equivalence</span>
 <span class="n">libcellml</span><span class="o">.</span><span class="n">Variable</span><span class="o">.</span><span class="n">removeEquivalence</span><span class="p">(</span>
     <span class="n">sodium_channel_model</span><span class="o">.</span><span class="n">component</span><span class="p">(</span><span class="s2">&quot;environment&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">variable</span><span class="p">(</span><span class="s2">&quot;t&quot;</span><span class="p">),</span>
