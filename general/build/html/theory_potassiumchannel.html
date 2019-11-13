@@ -1,0 +1,193 @@
+
+
+<!doctype html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>A model of the potassium channel &#8212; libCellML Tutorials  documentation</title>
+    <link rel="stylesheet" href="_static/bizstyle.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="_static/bizstyle.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="A model of a sodium channel" href="theory_sodiumchannel.html" />
+    <link rel="prev" title="A model of ion channel gating and current" href="theory_iongates.html" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="_static/css3-mediaqueries.js"></script>
+    <![endif]-->
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="theory_sodiumchannel.html" title="A model of a sodium channel"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="theory_iongates.html" title="A model of ion channel gating and current"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">libCellML Tutorials  documentation</a> &#187;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="theory_iongates.html"
+                        title="previous chapter">A model of ion channel gating and current</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="theory_sodiumchannel.html"
+                        title="next chapter">A model of a sodium channel</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/theory_potassiumchannel.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <style> .red {color:red} .purple {color:purple} .orange {color:orange} .green {color:green} .blue {color:blue} .olive {color:olive} .pink {color:pink}</style><div class="section" id="a-model-of-the-potassium-channel">
+<span id="theory-potassiumchannel"></span><h1>A model of the potassium channel<a class="headerlink" href="#a-model-of-the-potassium-channel" title="Permalink to this headline">¶</a></h1>
+<p>We now deal specifically with the application of the ion channel model
+discussed in <a class="reference internal" href="theory_iongates.html#theory-iongates"><span class="std std-ref">the last chapter</span></a> to
+the Hodgkin and Huxley (HH) potassium channel. Following the convention
+introduced by Hodgkin and Huxley, the gating variable for the potassium
+channel is <span class="math notranslate nohighlight">\(n\)</span> and the number of gates in series is
+<span class="math notranslate nohighlight">\(\gamma = 4\)</span>, therefore</p>
+<div class="math notranslate nohighlight">
+\[i_{K} = \bar{i_K}n^{4} = n^{4}\bar{g}_{K}\left( V - E_{K} \right)\]</div>
+<p>where <span class="math notranslate nohighlight">\(\bar{g}_{K} = \ 36 \text{mS.cm}^{-2}\)</span>,
+and with intra- and extra-cellular concentrations
+<span class="math notranslate nohighlight">\(\left\lbrack K^{+} \right\rbrack_{i} = 90\text{mM}\)</span> and
+<span class="math notranslate nohighlight">\(\left\lbrack K^{+} \right\rbrack_{o} = 3\text{mM}\)</span>, respectively, the
+Nernst potential for the potassium channel (<span class="math notranslate nohighlight">\(z = 1\)</span> since one +ve charge
+on <span class="math notranslate nohighlight">\(K^{+}\)</span>) is:</p>
+<div class="math notranslate nohighlight">
+\[E_{k} = \frac{\text{RT}}{\text{zF}} ln\frac{\left\lbrack K^{+}
+\right\rbrack_{o}}{\left\lbrack K^{+} \right\rbrack_{i}} =
+25\text{ }ln\frac{3}{90} = - 85\text{mV}\]</div>
+<p>As noted above, this is called the <em>equilibrium potential</em> since it is
+the potential across the cell membrane when the channel is open but no
+current is flowing because the electrostatic driving force from the
+potential (voltage) difference between internal and external ion charges
+is exactly matched by the entropic driving force from the ion
+concentration difference. <span class="math notranslate nohighlight">\(n^{4}\bar{g}_{K}\)</span> is
+the channel conductance.</p>
+<p>The gating kinetics are described (as before) by:</p>
+<div class="math notranslate nohighlight">
+\[\frac{dn}{dt} = \alpha_{n}\left( 1 - n \right) - \beta_{n}\text{.}n\]</div>
+<p>with time constant:</p>
+<div class="math notranslate nohighlight">
+\[\tau_{n} = \frac{1}{\alpha_{n} + \beta_{n}}\]</div>
+<p>The main difference from the gating model in our previous example is
+that Hodgkin and Huxley found it necessary to make the rate constants
+functions of the membrane potential <span class="math notranslate nohighlight">\(V\)</span>
+(see <a class="reference internal" href="#ocr-tut-volt-deps-gates"><span class="std std-numref">Fig. 7</span></a>) as
+follows<a class="footnote-reference brackets" href="#id2" id="id1">1</a>:</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}\alpha_{n} = \frac{- 0.01\left( V + 65 \right)}{e^{\frac{- \left( V + 65 \right)}{10}} - 1}\\\beta_{n} = 0.125e^{\frac{- \left( V + 75 \right)}{80}}\end{aligned}\end{align} \]</div>
+<div class="figure align-center" id="ocr-tut-volt-deps-gates" style="width: 8cm">
+<img alt="Voltage dependencies of gate constants" src="_images/volt_deps_of_gate_consts.png" />
+<p class="caption"><span class="caption-number">Fig. 7 </span><span class="caption-text">Voltage dependence of rate constants <span class="math notranslate nohighlight">\(\alpha_n\)</span> and
+<span class="math notranslate nohighlight">\(\beta_n (\text{ms}^{-1})\)</span>,
+time constant <span class="math notranslate nohighlight">\(\tau_n (\text{ms})\)</span> and
+relative conductance <span class="math notranslate nohighlight">\(\frac{g_{SS}}{\bar{g}_Y}\)</span>.</span><a class="headerlink" href="#ocr-tut-volt-deps-gates" title="Permalink to this image">¶</a></p>
+</div>
+<p>Note that under steady state conditions when
+<span class="math notranslate nohighlight">\(t \rightarrow \infty\)</span> and
+<span class="math notranslate nohighlight">\(\frac{dn}{dt} \rightarrow 0\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\left. \ n \right|_{t = \infty} = n_{\infty} =
+\frac{\alpha_{n}}{\alpha_{n} + \beta_{n}}\]</div>
+<p>The voltage dependence of the steady state channel conductance is then:</p>
+<div class="math notranslate nohighlight">
+\[g_{\text{SS}} = \left( \frac{\alpha_{n}}{\alpha_{n} + \beta_{n}} \right)^{4}.\bar{g}_{Y}\]</div>
+<p>(see <a class="reference internal" href="#ocr-tut-volt-deps-gates"><span class="std std-numref">Fig. 7</span></a>). The steady state current-voltage
+relation for the channel is illustrated in <a class="reference internal" href="#ocr-tut-ss-cur-volt"><span class="std std-numref">Fig. 8</span></a>.</p>
+<p>Defining components serves two purposes: it preserves a modular
+structure for CellML models, and allows these component modules to be
+imported into other models, as we will illustrate later in
+<span class="xref std std-ref">Tutorial 5</span>. For the
+potassium channel model we define components representing (i) the
+environment, (ii) the potassium channel conductivity, and (iii) the
+dynamics of the n-gate.</p>
+<div class="figure align-center" id="ocr-tut-ss-cur-volt" style="width: 8cm">
+<img alt="Steady-state current voltage" src="_images/ss_cur_volt.png" />
+<p class="caption"><span class="caption-number">Fig. 8 </span><span class="caption-text">The steady-state current-voltage relation for the potassium channel.</span><a class="headerlink" href="#ocr-tut-ss-cur-volt" title="Permalink to this image">¶</a></p>
+</div>
+<p>Since certain variables (t, V and n) are shared between components, we
+need to also define the component maps as indicated in the <em>CellML Text</em>
+view below. <strong>TODO</strong></p>
+<p>This potassium channel model will be used later, along with a sodium
+channel model (in <span class="xref std std-ref">Tutorial 7</span>) and a leakage channel
+model, to form the Hodgkin-Huxley
+neuron model (in <span class="xref std std-ref">Tutorial 8</span>), where the membrane ion
+channel current flows are coupled to the equations governing current flow
+along the axon to generate an action potential.</p>
+<hr class="docutils" />
+<p class="rubric">Footnotes</p>
+<dl class="footnote brackets">
+<dt class="label" id="id2"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
+<dd><p>The original expression in the HH paper used
+<span class="math notranslate nohighlight">\(\alpha_n = \frac{0.01(v+10)}{e^{\frac{(v+10)}{10}}-1}\)</span> and
+<span class="math notranslate nohighlight">\(\beta_n = 0.125e^{\frac{v}{80}}\)</span>, where <span class="math notranslate nohighlight">\(v\)</span> is defined
+relative to the resting potential (<span class="math notranslate nohighlight">\(-75\text{mV}\)</span>) with +ve
+corresponding to +ve <em>inward</em> current and <span class="math notranslate nohighlight">\(v = -(V+75)\)</span>.</p>
+</dd>
+</dl>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="theory_sodiumchannel.html" title="A model of a sodium channel"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="theory_iongates.html" title="A model of ion channel gating and current"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">libCellML Tutorials  documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2019, libCellML group, ABI.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.1.2.
+    </div>
+  </body>
+</html>

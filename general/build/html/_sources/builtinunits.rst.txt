@@ -1,8 +1,8 @@
 ..  _builtinunits:
 
-==============
+--------------
 Built-in units
-==============
+--------------
 
 The libCellML library includes a set of irreducible units, as well as a
 convenience set of their most common combinations.  These built-in units,

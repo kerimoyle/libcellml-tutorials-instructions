@@ -1,0 +1,325 @@
+
+
+<!doctype html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>A model of ion channel gating and current &#8212; libCellML Tutorials  documentation</title>
+    <link rel="stylesheet" href="_static/bizstyle.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="_static/bizstyle.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="A model of the potassium channel" href="theory_potassiumchannel.html" />
+    <link rel="prev" title="libCellML Tutorials - Theory and References" href="index.html" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="_static/css3-mediaqueries.js"></script>
+    <![endif]-->
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="theory_potassiumchannel.html" title="A model of the potassium channel"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="libCellML Tutorials - Theory and References"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">libCellML Tutorials  documentation</a> &#187;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="index.html"
+                        title="previous chapter">libCellML Tutorials - Theory and References</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="theory_potassiumchannel.html"
+                        title="next chapter">A model of the potassium channel</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/theory_iongates.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <style> .red {color:red} .purple {color:purple} .orange {color:orange} .green {color:green} .blue {color:blue} .olive {color:olive} .pink {color:pink}</style><div class="section" id="a-model-of-ion-channel-gating-and-current">
+<span id="theory-iongates"></span><h1>A model of ion channel gating and current<a class="headerlink" href="#a-model-of-ion-channel-gating-and-current" title="Permalink to this headline">¶</a></h1>
+<p>A good example of a model based on a first order equation is the one
+used by Hodgkin and Huxley <a href="#id1"><span class="problematic" id="id2">:cite:`10`</span></a> to describe the gating behaviour of an
+ion channel. Before we describe the
+gating behaviour of an ion channel, however, we need to explain the
+concepts of the ‘Nernst potential’ and channel conductance.</p>
+<p>An ion channel is a protein or protein complex embedded in the bilipid
+membrane surrounding a cell and containing a pore through which an ion
+<span class="math notranslate nohighlight">\(Y^{+}\)</span> (or <span class="math notranslate nohighlight">\(Y^{-}\)</span>) can pass when the channel is open. If
+the concentration of this ion is
+<span class="math notranslate nohighlight">\(\left\lbrack Y^{+} \right\rbrack_{o}\)</span> outside the cell and
+<span class="math notranslate nohighlight">\(\left\lbrack Y^{+} \right\rbrack_{i}\)</span> inside the cell, the force
+driving an ion through the pore is calculated from the change in
+<em>entropy</em>.</p>
+<div class="figure align-right" id="ocr-tut-dist-ust" style="width: 300px">
+<img alt="Distribution of microstates" src="_images/distribution_microstates.png" />
+<p class="caption"><span class="caption-number">Fig. 1 </span><span class="caption-text">Distribution of microstates in a system <a href="#id3"><span class="problematic" id="id4">:cite:`11`</span></a>. The 16 particles in a
+confined region (left) have only one possible arrangement (W = 1) and
+therefore zero entropy (<span class="math notranslate nohighlight">\(k_{B}\text{lnW}=0\)</span>). When the barrier is
+removed and the number of possible locations for each particle increases
+4x (right), the number of possible arrangements for the 16 particles
+increases by 416 and the increase in entropy is therefore <span class="math notranslate nohighlight">\(ln(416)\)</span>
+or <span class="math notranslate nohighlight">\(16ln4\)</span>. The thermal energy (temperature) of the previously
+confined particles on the left has been redistributed in space to achieve
+a more probable (higher entropy) state. If we now added more particles to
+the container on the right, the concentration would increase and the entropy
+would decrease.</span><a class="headerlink" href="#ocr-tut-dist-ust" title="Permalink to this image">¶</a></p>
+<div class="legend">
+</div>
+</div>
+<p>Entropy <span class="math notranslate nohighlight">\(S\)</span> (<span class="math notranslate nohighlight">\(J.K^{-1}\)</span>) is a measure of the number of
+microstates available to a system, as defined by Boltzmann’s equation
+<span class="math notranslate nohighlight">\(S = k_{B}\text{lnW}\)</span>, where <span class="math notranslate nohighlight">\(W\)</span> is the number of ways of
+arranging a given distribution of microstates of a system and
+<span class="math notranslate nohighlight">\(k_{B}\)</span> is Boltzmann’s constant<a class="footnote-reference brackets" href="#id9" id="id5">1</a>. The driving force for ion
+movement is the dispersal of energy into a more probable distribution
+(see <a class="reference internal" href="#ocr-tut-dist-ust"><span class="std std-numref">Fig. 1</span></a>; cf. the second law of thermodynamics<a class="footnote-reference brackets" href="#id10" id="id6">2</a>).</p>
+<p>The energy change <span class="math notranslate nohighlight">\(\Delta q\)</span> associated with this change of
+entropy <span class="math notranslate nohighlight">\(\Delta S\)</span> at temperature <span class="math notranslate nohighlight">\(T\)</span> is
+<span class="math notranslate nohighlight">\(\Delta q = T\Delta S\)</span> (J).</p>
+<p>For a given volume of fluid the number of microstates <span class="math notranslate nohighlight">\(W\)</span>
+available to a solute (and hence the entropy of the solute) at a high
+concentration is less than that for a low concentration<a class="footnote-reference brackets" href="#id11" id="id7">3</a>. The
+energy difference driving ion movement from a high ion concentration
+<span class="math notranslate nohighlight">\(\left\lbrack Y^{+} \right\rbrack_{i}\)</span> (lower entropy) to a lower
+ion concentration <span class="math notranslate nohighlight">\(\left\lbrack Y^{+} \right\rbrack_{o}\)</span> (higher
+entropy) is therefore</p>
+<div class="math notranslate nohighlight">
+\[\Delta q = T\Delta S = k_{B}T\left( \ln{\left\lbrack Y^{+} \right\rbrack_{o} - \ln\left\lbrack Y^{+} \right\rbrack_{i}} \right) = k_{B}T\ln\frac{\left\lbrack Y^{+} \right\rbrack_{o}}{\left\lbrack Y^{+} \right\rbrack_{i}}
+( J.ion^{-1} )\]</div>
+<p>or</p>
+<div class="math notranslate nohighlight">
+\[\Delta Q = RT\ln\frac{\left\lbrack Y^{+} \right\rbrack_{o}}{\left\lbrack Y^{+} \right\rbrack_{i}}
+(:math:`J.mol^{-1}`).\]</div>
+<p><span class="math notranslate nohighlight">\(R = k_{B}N_{A} \approx 1.34x10^{-23} (J.K^{-1}) \text{x}
+6.02x10^{23} (mol^{-1}) \approx 8.4 (J.mol^{-1}K^{-1})\)</span>
+is the ‘universal gas constant’<a class="footnote-reference brackets" href="#id12" id="id8">4</a>.
+At 25°C (298K), <span class="math notranslate nohighlight">\(\text{RT} \approx 2.5 kJ.mol^{-1}\)</span>.</p>
+<div class="figure align-right" id="ocr-tut-bal-force" style="width: 250px">
+<img alt="Balance of entropic and electrostatic forces" src="_images/balance_forces.png" />
+<p class="caption"><span class="caption-number">Fig. 2 </span><span class="caption-text">The balance between <span class="purple">entropic</span> and <span class="red">electrostatic</span> forces determines the Nernst potential.</span><a class="headerlink" href="#ocr-tut-bal-force" title="Permalink to this image">¶</a></p>
+</div>
+<p>Every positively charged ion that crosses the membrane raises the
+potential difference and produces an electrostatic driving force that
+opposes the entropic force (see <a class="reference internal" href="#ocr-tut-bal-force"><span class="std std-numref">Fig. 2</span></a>). To move an
+electron of
+charge <em>e</em> (<span class="math notranslate nohighlight">\(\approx 1.6x10^{-19}\)</span> C) through a voltage change of
+<span class="math notranslate nohighlight">\(\Delta\phi\)</span> (V) requires energy <span class="math notranslate nohighlight">\(e\Delta\phi\)</span> (J) and
+therefore the energy needed to move an ion <span class="math notranslate nohighlight">\(Y^{+}\)</span> of valence
+<em>z=1</em> (the number of charges per ion) through a voltage change of
+<span class="math notranslate nohighlight">\(\Delta\phi\)</span> is <span class="math notranslate nohighlight">\(\text{ze}\Delta\phi\)</span>
+(<span class="math notranslate nohighlight">\(J.ion^{-1}\)</span>) or
+<span class="math notranslate nohighlight">\(\text{ze}N_{A}\Delta\phi\)</span> (<span class="math notranslate nohighlight">\(J.mol^{-1}\)</span>). Using Faraday’s
+constant <span class="math notranslate nohighlight">\(F = eN_{A}\)</span>, where
+<span class="math notranslate nohighlight">\(F \approx 0.96x10^{5} C.mol^{-1}\)</span>, the change in energy
+density at the macroscopic scale is <span class="math notranslate nohighlight">\(\text{zF}\Delta\phi\)</span>
+(<span class="math notranslate nohighlight">\(J.mol^{-1}\)</span>).</p>
+<p>No further movement of ions takes place when the force for entropy
+driven ion movement exactly equals the opposing electrostatic driving
+force associated with charge movement:</p>
+<div class="math notranslate nohighlight">
+\[\text{zF}\Delta\phi = \text{RT}\ln\frac{\left\lbrack Y^{+} \right\rbrack_{o}}{\left\lbrack Y^{+} \right\rbrack_{i}}
+( J.mol^{-1} ) or\]</div>
+<div class="math notranslate nohighlight">
+\[\Delta\phi = E_{Y} = \frac{\text{RT}}{\text{zF}}\ln\frac{\left\lbrack Y^{+} \right\rbrack_{o}}{\left\lbrack Y^{+} \right\rbrack_{i}}
+( J.C^{-1} or V)\]</div>
+<p>where <span class="math notranslate nohighlight">\(E_{Y}\)</span> is the ‘equilibrium’ or ‘Nernst’ potential for
+<span class="math notranslate nohighlight">\(Y^{+}\)</span>. At 25°C (298K),
+<span class="math notranslate nohighlight">\(\frac{\text{RT}}{F} =
+\frac{2.5x10^{3}\ }{0.96x10^{5}} (J.C^{-1}) \approx 25mV\)</span>.</p>
+<div class="figure align-right" id="ocr-tut-open-ch-iv" style="width: 250px">
+<img alt="Open channel linear IV" src="_images/open_ch_linear_iv.png" />
+<p class="caption"><span class="caption-number">Fig. 3 </span><span class="caption-text">Open channel linear current-voltage relation</span><a class="headerlink" href="#ocr-tut-open-ch-iv" title="Permalink to this image">¶</a></p>
+</div>
+<p>For an open channel the electrochemical current flow is driven by the
+open channel conductance <span class="math notranslate nohighlight">\({\overset{\overline{}}{g}}_{Y}\)</span> times
+the difference between the transmembrane voltage <span class="math notranslate nohighlight">\(V\)</span> and the
+Nernst potential for that ion:</p>
+<div class="math notranslate nohighlight">
+\[{\overset{\overline{}}{i}}_{Y}\mathbf{=}{\overset{\overline{}}{g}}_{Y}\left( V - E_{Y} \right)\]</div>
+<p>This defines a linear current-voltage relation (‘Ohms law’) as shown in
+<a class="reference internal" href="#ocr-tut-open-ch-iv"><span class="std std-numref">Fig. 3</span></a>. The gates to be discussed below modify this
+open channel conductance.</p>
+<div class="figure align-right" id="ocr-tut-ion-ch-gating" style="width: 250px">
+<img alt="Ion channel gating kinetics" src="_images/ion_ch_gating.png" />
+<p class="caption"><span class="caption-number">Fig. 4 </span><span class="caption-text">Ion channel gating kinetics. <span class="math notranslate nohighlight">\(y\)</span> is the fraction of gates in the open
+state. <span class="math notranslate nohighlight">\(\alpha_n\)</span> and <span class="math notranslate nohighlight">\(\beta_n\)</span> are the rate constants for
+opening and closing, respectively.</span><a class="headerlink" href="#ocr-tut-ion-ch-gating" title="Permalink to this image">¶</a></p>
+</div>
+<div class="figure align-right" id="ocr-tut-trans-gate-beh" style="width: 250px">
+<img alt="Transient gate behaviour" src="_images/transient_beh_gates.png" />
+<p class="caption"><span class="caption-number">Fig. 5 </span><span class="caption-text">Transient behaviour for one gate (left) and γ gates in series (right). Note
+that the right hand graph has an initial S-shaped increase, reflecting the
+multiple gates in series.</span><a class="headerlink" href="#ocr-tut-trans-gate-beh" title="Permalink to this image">¶</a></p>
+</div>
+<p>To describe the time dependent transition between the closed and open
+states of the channel, Hodgkin and Huxley introduced the idea of channel
+gates that control the passage of ions through a membrane ion channel.
+If the fraction of gates that are open is <em>y</em>, the fraction of gates
+that are closed is <span class="math notranslate nohighlight">\(1-y\)</span>, and a first order ODE can be used to describe
+the transition between the two states (see <a class="reference internal" href="#ocr-tut-ion-ch-gating"><span class="std std-numref">Fig. 4</span></a>):</p>
+<div class="math notranslate nohighlight">
+\[\frac{\text{dy}}{\text{dt}} = \alpha_{y}\left( 1 - y \right) - \beta_{y}\text{.y}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\alpha_{y}\)</span>is the opening rate and <span class="math notranslate nohighlight">\(\beta_{y}\)</span> is
+the closing rate.</p>
+<p>The solution to this ODE is:</p>
+<div class="math notranslate nohighlight">
+\[y = \frac{\alpha_{y}}{\alpha_{y} + \beta_{y}} + Ae^{- \left( \alpha_{y} + \beta_{y} \right)t}\]</div>
+<p>The constant <span class="math notranslate nohighlight">\(A\)</span> can be interpreted as
+<span class="math notranslate nohighlight">\(A = y\left( 0 \right) - \frac{\alpha_{y}}{\alpha_{y} + \beta_{y}}\)</span>
+as in the previous example and, with <span class="math notranslate nohighlight">\(y\left( 0 \right) = 0\)</span> (i.e.
+all gates initially shut), the solution looks like
+<a class="reference internal" href="#ocr-tut-trans-gate-beh"><span class="std std-numref">Fig. 5(a)</span></a>.</p>
+<p>The experimental data obtained by Hodgkin and Huxley for the squid axon,
+however, indicated that the initial current flow began more slowly
+(<a class="reference internal" href="#ocr-tut-trans-gate-beh"><span class="std std-numref">Fig. 5(b)</span></a>) and they modelled this
+by assuming that the ion channel had
+<span class="math notranslate nohighlight">\(\gamma\)</span> gates in series so that conduction would only occur when
+all gates were at least partially open. Since <span class="math notranslate nohighlight">\(y\)</span> is the
+probability of a gate being open, <span class="math notranslate nohighlight">\(y^{\gamma}\)</span> is the probability
+of all <span class="math notranslate nohighlight">\(\gamma\)</span> gates being open (since they are assumed to be
+independent) and the current through the channel is</p>
+<div class="math notranslate nohighlight">
+\[i_{Y} = {\overset{\overline{}}{i}}_{Y}y^{\gamma} = y^{\gamma}{\overset{\overline{}}{g}}_{Y}\left( V - E_{Y} \right)\]</div>
+<p>where</p>
+<div class="math notranslate nohighlight">
+\[{\overset{\overline{}}{i}}_{Y}{= \overset{\overline{}}{g}}_{Y}\left( V - E_{Y} \right)\]</div>
+<p>is the steady state current through the open gate.</p>
+<p>The solution of these equations for the parameters indicated above is
+illustrated in <a class="reference internal" href="#ocr-tut-ocr-4-ion-ch"><span class="std std-numref">Fig. 6</span></a>.</p>
+<div class="figure align-center" id="ocr-tut-ocr-4-ion-ch">
+<img alt="OpenCOR solution to 4 gate ion channel model" src="_images/opencor_four_gate_ion_channel.png" />
+<p class="caption"><span class="caption-number">Fig. 6 </span><span class="caption-text">The behaviour of an ion channel with <span class="math notranslate nohighlight">\(\gamma = 4\)</span>
+gates transitioning from the closed to the open state at a membrane
+voltage <span class="math notranslate nohighlight">\(V = 0\)</span>. The opening and closing rate constants are
+<span class="math notranslate nohighlight">\(\alpha_{y} = 1\)</span> ms<sup>-1</sup> and <span class="math notranslate nohighlight">\(\beta_{y} = 2\)</span>
+ms<sup>-1</sup>. The ion channel has an open conductance of
+<span class="math notranslate nohighlight">\({\overset{\overline{}}{g}}_{Y} = 36\)</span> mS.cm<sup>-2</sup> and an
+equilibrium potential of <span class="math notranslate nohighlight">\(E_{Y} = - 85\)</span> mV. The upper transient is
+the response <span class="math notranslate nohighlight">\(y\left( t \right)\)</span> for each gate and the lower trace
+is the current through the channel. Note the slow start to the current
+trace in comparison with the single gate transient
+<span class="math notranslate nohighlight">\(y\left( t \right)\)</span>.</span><a class="headerlink" href="#ocr-tut-ocr-4-ion-ch" title="Permalink to this image">¶</a></p>
+</div>
+<p>The model of a gated ion channel presented here is used in the next two
+sections for the neural potassium and sodium channels and then in
+Section 11 for cardiac ion channels. The gates make the channel
+conductance time dependent and, as we will see in the next section, the
+experimentally observed voltage dependence of the gating rate constants
+<span class="math notranslate nohighlight">\(\alpha_{y}\)</span> and <span class="math notranslate nohighlight">\(\beta_{y}\)</span> means that the channel
+conductance (including the open channel conductance) is voltage
+dependent. For a partially open channel (<span class="math notranslate nohighlight">\(y &lt; 1\)</span>), the steady
+state conductance is
+<span class="math notranslate nohighlight">\(\left( y_{\infty} \right)^{\gamma}{.\overset{\overline{}}{g}}_{Y}\)</span>,
+where <span class="math notranslate nohighlight">\(y_{\infty} = \frac{\alpha_{y}}{\alpha_{y} + \beta_{y}}\)</span>.
+Moreover the gating time constants
+<span class="math notranslate nohighlight">\(\tau = \frac{1}{\alpha_{y} + \beta_{y}}\)</span> are therefore also
+voltage dependent. Both of these voltage dependent factors of ion
+channel gating are important in explaining channel properties, as we
+show now for the neural potassium and sodium ion channels.</p>
+<hr class="docutils" />
+<p class="rubric">Footnotes</p>
+<dl class="footnote brackets">
+<dt class="label" id="id9"><span class="brackets"><a class="fn-backref" href="#id5">1</a></span></dt>
+<dd><p>The Brownian motion of individual molecules has energy <span class="math notranslate nohighlight">\(k_{B}T\)</span>
+(J), where the Boltzmann constant <span class="math notranslate nohighlight">\(k_{B}\)</span> is approximately
+<span class="math notranslate nohighlight">\(1.34x10^{-23}\)</span> (<span class="math notranslate nohighlight">\(J.K^{-1}\)</span>). At 25°C, or 298K, <span class="math notranslate nohighlight">\(k_{B}T\)</span>
+= <span class="math notranslate nohighlight">\(4.10^{-21}\)</span> (J) is the minimum amount of energy to contain a
+‘bit’ of information at that temperature.</p>
+</dd>
+<dt class="label" id="id10"><span class="brackets"><a class="fn-backref" href="#id6">2</a></span></dt>
+<dd><p>The <em>first law of thermodynamics</em> states that energy is conserved,
+and the <em>second law</em> (that natural processes are accompanied by an
+increase in entropy of the universe) deals with the distribution of
+energy in space.</p>
+</dd>
+<dt class="label" id="id11"><span class="brackets"><a class="fn-backref" href="#id7">3</a></span></dt>
+<dd><p>At infinitely high concentration the specified volume is jammed
+packed with solute and the entropy is zero.</p>
+</dd>
+<dt class="label" id="id12"><span class="brackets"><a class="fn-backref" href="#id8">4</a></span></dt>
+<dd><p><span class="math notranslate nohighlight">\(N_{A}\)</span> is Avogadro’s number (<span class="math notranslate nohighlight">\(6.023x10^{23}\)</span>) and is the
+scaling factor between molecular and macroscopic processes.
+Boltzmann’s constant <span class="math notranslate nohighlight">\(k_{B}\)</span> and electron charge <em>e</em> operate at
+the atomic/molecular scale. Their effect at the physiological scale
+is via the universal gas constant <span class="math notranslate nohighlight">\(R = k_{B}N_{A}\)</span> and
+Faraday’s constant <span class="math notranslate nohighlight">\(F = eN_{A}\)</span>.</p>
+</dd>
+<dt class="label" id="id13"><span class="brackets">5</span></dt>
+<dd><p>It is well accepted in engineering analysis that thinking about and
+dealing with units is a key aspect of modelling. Taking the ratio of
+dimensionally consistent terms provides non-dimensional numbers which
+can be used to decide when a term in an equation can be omitted in
+the interests of modelling simplicity. We investigate this idea
+further in a later section.</p>
+</dd>
+<dt class="label" id="id14"><span class="brackets">6</span></dt>
+<dd><p><a class="reference external" href="http://en.wikipedia.org/wiki/International_System_of_Units">http://en.wikipedia.org/wiki/International_System_of_Units</a></p>
+</dd>
+</dl>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="theory_potassiumchannel.html" title="A model of the potassium channel"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="libCellML Tutorials - Theory and References"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">libCellML Tutorials  documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2019, libCellML group, ABI.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.1.2.
+    </div>
+  </body>
+</html>
