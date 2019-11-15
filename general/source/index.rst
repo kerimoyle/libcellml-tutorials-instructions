@@ -22,6 +22,7 @@ Theory
 .. toctree::
    :maxdepth: 2
 
+   hh_background
    theory_iongates
    theory_potassiumchannel
    theory_sodiumchannel

@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>Generator notes &#8212; libCellML Tutorials  documentation</title>
+    <title>Code generation in libCellML &#8212; libCellML Tutorials  documentation</title>
     <link rel="stylesheet" href="_static/bizstyle.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     
@@ -73,8 +73,8 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="generator-notes">
-<h1>Generator notes<a class="headerlink" href="#generator-notes" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="code-generation-in-libcellml">
+<span id="generator-notes"></span><h1>Code generation in libCellML<a class="headerlink" href="#code-generation-in-libcellml" title="Permalink to this headline">¶</a></h1>
 <p>Some exciting new functionality of libCellML is its ability to generate a
 runable file from a model description.  This means that you don’t need to
 link your model to a solver of any kind, you can simply generate a script
@@ -86,27 +86,40 @@ run your simulation.  Let’s give it a go.</p>
 <span class="n">generator</span><span class="p">.</span><span class="n">processModel</span><span class="p">(</span><span class="n">model</span><span class="p">);</span>
 </pre></div>
 </div>
-<p>The Generator functionality allows us to export runable files in
-different languages, called <em>profiles</em> in libCellML.  The
-default setting is for C, but you can change this using the
-<code class="code docutils literal notranslate"><span class="pre">setProfile</span></code> function if you need to:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Instantiate the generator and submit the model to it for processing</span>
+<span class="n">generator</span> <span class="o">=</span> <span class="n">Generator</span><span class="p">()</span>
+<span class="n">generator</span><span class="o">.</span><span class="n">processModel</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The Generator functionality allows you to export your CellML model in
+different languages, called <em>profiles</em>.  The default setting is for <code class="code docutils literal notranslate"><span class="pre">C</span></code>,
+but you can change this using the <code class="code docutils literal notranslate"><span class="pre">setProfile</span></code> function if you need to.</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">libcellml</span><span class="o">::</span><span class="n">GeneratorProfilePtr</span> <span class="n">profile</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">make_shared</span><span class="o">&lt;</span><span class="n">libcellml</span><span class="o">::</span><span class="n">GeneratorProfile</span><span class="o">&gt;</span><span class="p">(</span><span class="n">libcellml</span><span class="o">::</span><span class="n">GeneratorProfile</span><span class="o">::</span><span class="n">Profile</span><span class="o">::</span><span class="n">PYTHON</span><span class="p">);</span>
 <span class="n">generator</span><span class="p">.</span><span class="n">setProfile</span><span class="p">(</span><span class="n">profile</span><span class="p">);</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">profile</span> <span class="o">=</span> <span class="n">GeneratorProfile</span><span class="p">(</span><span class="n">GeneratorProfile</span><span class="o">.</span><span class="n">Profile</span><span class="o">.</span><span class="n">PYTHON</span><span class="p">)</span>
+<span class="n">generator</span><span class="o">.</span><span class="n">setProfile</span><span class="p">(</span><span class="n">profile</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Of course, your choice of generator profile (language) will affect
 what you need to export.  If you’re using C, then you will need both the
 header file as well as the source code.  If you’re using Python, you will
 only need the source code.</p>
-<p>For C:</p>
-<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// Retrieve the interface or header code, and write to a file:</span>
+<p>For the C profile:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// Retrieve the interface or header code:</span>
 <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">headerCode</span> <span class="o">=</span> <span class="n">generator</span><span class="p">.</span><span class="n">interfaceCode</span><span class="p">();</span>
-
-<span class="c1">// Retrieve the main source code and write to a file:</span>
+<span class="c1">// Retrieve the main source code:</span>
 <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">sourceCode</span> <span class="o">=</span> <span class="n">generator</span><span class="p">.</span><span class="n">implementationCode</span><span class="p">();</span>
 </pre></div>
 </div>
-<p>For Python:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Retrieve the interface or header code:</span>
+<span class="n">header_code</span> <span class="o">=</span> <span class="n">generator</span><span class="o">.</span><span class="n">interfaceCode</span><span class="p">()</span>
+<span class="c1"># Retrieve the main source code:</span>
+<span class="n">source_code</span> <span class="o">=</span> <span class="n">generator</span><span class="o">.</span><span class="n">implementationCode</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>For the Python profile:</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// Retrieve the main script code only:</span>
 <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">sourceCode</span> <span class="o">=</span> <span class="n">generator</span><span class="p">.</span><span class="n">implementationCode</span><span class="p">();</span>
 </pre></div>
